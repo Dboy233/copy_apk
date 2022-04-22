@@ -72,9 +72,9 @@ def createApk(String type ) {
     def appName = "${project.ext.APK_NAME}_${type}_${time()}.apk"
     copy {
         //需要知道任务assemble生成的APK文件的位置
-        File apkFile = new File("${buildDir.absolutePath}/intermediates/apk/${type}/${model.name}-${type}.apk".replace("/", File.separator))
+        File apkFile = new File("${buildDir.absolutePath}/intermediates/apk/${type}/${model.name}-${type}.apk".replace("/", File.separator))//AGP7.1+位置
         if (!apkFile.exists()) {
-            apkFile = new File("${buildDir.absolutePath}/outputs/apk/${type}/${model.name}-${type}.apk".replace("/", File.separator))
+            apkFile = new File("${buildDir.absolutePath}/outputs/apk/${type}/${model.name}-${type}.apk".replace("/", File.separator))//AGP7.1以前位置
         }
         if (apkFile.exists()) {
             def outputPath = "${buildDir.absolutePath}${File.separator}apk"
@@ -93,7 +93,7 @@ def createApk(String type ) {
             println("=====================APK Copy Error: not find apk=====================")
         }
     }
-    println("=====================APK Coupy end=====================")
+    println("=====================APK Copy end=====================")
 }
 
 def checkApkName(){
