@@ -112,6 +112,6 @@ static def time() {
 
 
 ```
-[img](/img.png)
+![img](/img.png)
 
 
