@@ -57,8 +57,7 @@ tasks.create("APK_DEBUG") {
 }
 
 tasks.create("APK"){
-    dependsOn('APK_RELEASE')
-    dependsOn('APK_DEBUG')
+    dependsOn(['APK_DEBUG','APK_RELEASE'])
     setGroup("build")
 }
 def createApk(String type ) {
