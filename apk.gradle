@@ -1,7 +1,24 @@
+/**
+ *==================================================================================================
+ *  将此文件放置工程根目录与setting.gradle同级。然后在项目的gradle文件中进行配置
+ *==================================================================================================
+ * app模块build.gradle
+ *
+ * apply from: '../apk.gradle'
+ * project.ext.app_name = "我是app名字"
+ *
+ * android{ ...
+ *
+ *
+ * 修改app产物apk的名字并，修改输出文件位置
+ *==================================================================================================
+ *配置完成后，在控制台输入 [gradlew assembleRelease ] 打包。
+ *==================================================================================================
+ */
 
 project.ext.app_name = "app"
 android {
-    applicationVariants.全部 { variant ->
+    applicationVariants.all { variant ->
         variant.outputs.all { output ->
             def appName = project.ext.app_name // 应用名
             def flavorName = variant.flavorName // 渠道名
@@ -17,7 +34,7 @@ android {
         def assembleTaskProvider = variant.getAssembleProvider().get()
         assembleTaskProvider.doLast {
             copy {
-                variant.outputs.全部 { file ->
+                variant.outputs.all { file ->
                     copy {
                         from file.outputFile
                         into outputFile
